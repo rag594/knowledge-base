@@ -30,4 +30,4 @@ The pattern is not exclusive to caching: a retry storm after a timeout, or a sur
 
 ## Related concepts
 
-[[PostgreSQL Scaling]], [[Connection Pooling]], [[Load Shedding]]
+[[postgresql-scaling|PostgreSQL Scaling]], [[connection-pooling|Connection Pooling]], [[load-shedding|Load Shedding]]

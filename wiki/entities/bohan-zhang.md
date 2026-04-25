@@ -17,8 +17,8 @@ Bohan Zhang is a Member of Technical Staff at OpenAI, working on production data
 
 ## Key ideas associated with this author
 
-[[PostgreSQL Scaling]], [[Database Replication]], MVCC trade-offs. His angle is pragmatic: push existing tools as far as they go before reaching for distributed complexity.
+[[postgresql-scaling|PostgreSQL Scaling]], [[database-replication|Database Replication]], MVCC trade-offs. His angle is pragmatic: push existing tools as far as they go before reaching for distributed complexity.
 
 ## Related
 
-[[OpenAI Blog]]
+[[openai-blog|OpenAI Blog]]

@@ -36,13 +36,13 @@ The conventional assumption is that you'll eventually need to shard a relational
 - Schema changes capped at a 5-second timeout; only lightweight operations; no full table rewrites.
 
 **Connection pooling**
-See [[Connection Pooling]]. PgBouncer in transaction/statement mode cut connection setup from 50ms to 5ms.
+See [[connection-pooling|Connection Pooling]]. PgBouncer in transaction/statement mode cut connection setup from 50ms to 5ms.
 
 **Workload isolation**
 Separate PostgreSQL instances for low-priority vs. high-priority traffic, and per-product isolation. Noisy neighbor containment by partition rather than throttle.
 
 **Caching + rate limiting**
-See [[Thundering Herd]] for cache locking. Rate limiting at 4 layers: application, connection pooler, proxy, query-level digest blocking.
+See [[thundering-herd|Thundering Herd]] for cache locking. Rate limiting at 4 layers: application, connection pooler, proxy, query-level digest blocking.
 
 ## Key sources
 
@@ -52,4 +52,4 @@ See [[Thundering Herd]] for cache locking. Rate limiting at 4 layers: applicatio
 
 ## Related concepts
 
-[[Connection Pooling]], [[Thundering Herd]], [[Database Replication]]
+[[connection-pooling|Connection Pooling]], [[thundering-herd|Thundering Herd]], [[database-replication|Database Replication]]

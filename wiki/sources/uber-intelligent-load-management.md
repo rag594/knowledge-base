@@ -25,7 +25,7 @@ A multi-author engineering post from Uber's Storage Platform team tracing the fu
 - CoDel (Controlled Delay, borrowed from networking): separate queues for reads, writes, and slow ops. Switches from FIFO to LIFO under pressure — favors fresh requests, fails stale ones fast.
 - Scorecard: per-tenant concurrency limits, deterministic, prevents noisy neighbors from hogging resources without triggering global overload.
 - Regulators: plug-in node-local detectors for write bytes, hot partition keys, memory, goroutines.
-- Limitation: priority-agnostic (critical ride requests dropped alongside background jobs), static timeouts caused [[Thundering Herd]] when rejected requests all retried simultaneously.
+- Limitation: priority-agnostic (critical ride requests dropped alongside background jobs), static timeouts caused [[thundering-herd|Thundering Herd]] when rejected requests all retried simultaneously.
 
 **Phase 3 — Cinnamon replaces CoDel:**
 - Priority tiers t0 (critical infra) → t5 (least critical). Sheds lowest priority first, preserving user-facing flows.
@@ -54,12 +54,12 @@ The framing of "concurrency, not QPS" as the right overload signal (via Little's
 
 ## Authors & publications
 
-[[Uber Engineering Blog]]
+[[uber-engineering-blog|Uber Engineering Blog]]
 
 ## Concepts
 
-[[Load Shedding]], [[Thundering Herd]], [[PostgreSQL Scaling]]
+[[load-shedding|Load Shedding]], [[thundering-herd|Thundering Herd]], [[postgresql-scaling|PostgreSQL Scaling]]
 
 ## Connections
 
-Directly extends [[Thundering Herd]] — CoDel's static timeouts caused exactly the thundering herd pattern described in [[scaling-postgresql-openai]], and Cinnamon's PID control is the fix. Both articles deal with the same cascade failure dynamic from different angles (caching layer vs. queuing layer). The "place control close to the source of truth" lesson mirrors OpenAI's finding that overload management must live at the storage layer, not the routing layer.
+Directly extends [[thundering-herd|Thundering Herd]] — CoDel's static timeouts caused exactly the thundering herd pattern described in [[scaling-postgresql-openai]], and Cinnamon's PID control is the fix. Both articles deal with the same cascade failure dynamic from different angles (caching layer vs. queuing layer). The "place control close to the source of truth" lesson mirrors OpenAI's finding that overload management must live at the storage layer, not the routing layer.

@@ -26,7 +26,7 @@ Shedding must live close to the storage layer, not at the routing or API layer. 
 
 **Static vs. dynamic limits**
 
-Static inflight limits and queue timeouts require manual tuning and cause instability — they under-shed when load is moderate and over-shed when spiky, triggering [[Thundering Herd]] from simultaneous rejections. PID-based dynamic control (used by Uber's Cinnamon) continuously adjusts limits based on real-time latency and error signals, producing smooth "dimmer switch" behavior instead of abrupt "hammer" rejection.
+Static inflight limits and queue timeouts require manual tuning and cause instability — they under-shed when load is moderate and over-shed when spiky, triggering [[thundering-herd|Thundering Herd]] from simultaneous rejections. PID-based dynamic control (used by Uber's Cinnamon) continuously adjusts limits based on real-time latency and error signals, producing smooth "dimmer switch" behavior instead of abrupt "hammer" rejection.
 
 **Algorithms in practice**
 
@@ -53,4 +53,4 @@ System-wide shedding doesn't solve noisy neighbors who hog resources below the g
 
 ## Related concepts
 
-[[Thundering Herd]], [[PostgreSQL Scaling]], [[Database Replication]]
+[[thundering-herd|Thundering Herd]], [[postgresql-scaling|PostgreSQL Scaling]], [[database-replication|Database Replication]]

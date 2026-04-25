@@ -28,4 +28,4 @@ The process of copying data from a primary database instance to one or more repl
 
 ## Related concepts
 
-[[PostgreSQL Scaling]], [[Connection Pooling]]
+[[postgresql-scaling|PostgreSQL Scaling]], [[connection-pooling|Connection Pooling]]

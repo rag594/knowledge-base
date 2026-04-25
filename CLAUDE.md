@@ -186,7 +186,7 @@ Content of the analysis.
 
 ## Linking convention
 
-- Always use Obsidian wiki-link format: `[[Page Title]]` or `[[filename|Display Text]]`.
+- Always use `[[slug|Display Text]]` format for all wiki links — e.g. `[[thundering-herd|Thundering Herd]]`, `[[bohan-zhang|Bohan Zhang]]`. **Never use `[[Title Case With Spaces]]`** — Quartz converts spaces to hyphens but does not lowercase, producing broken links (`../Thundering-Herd` instead of `../thundering-herd`).
 - Every author name, publication name, and concept term that has (or should have) a page must be linked on every appearance.
 - When you create a new page, add backlinks from relevant existing pages.
 
@@ -290,6 +290,18 @@ Operations: `ingest`, `query`, `lint`, `update`.
 - **No duplication.** Source summaries hold detail; concept pages hold synthesis. Don't paste the same paragraph in both.
 - **Prefer updating over creating.** Expand an existing concept page before creating a new near-duplicate.
 - **Link generously.** Every entity and concept with a page gets linked every time it appears.
+
+---
+
+## Publishing
+
+The wiki is deployed to `wiki.raghavrastogi.xyz` via Quartz + GitHub Pages. After each ingest session, remind the human to publish:
+
+```
+git add -A && git commit -m "ingest: <article title>" && git push
+```
+
+Quartz builds from the `wiki/` directory (`npx quartz build --directory wiki`). The `raw/` directory is in git but not published. The GitHub Actions workflow is at `.github/workflows/deploy.yml`.
 
 ---
 

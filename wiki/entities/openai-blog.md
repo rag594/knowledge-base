@@ -18,4 +18,4 @@ OpenAI's official engineering and research blog. Covers model releases, infrastr
 
 ## Related authors
 
-[[Bohan Zhang]]
+[[bohan-zhang|Bohan Zhang]]

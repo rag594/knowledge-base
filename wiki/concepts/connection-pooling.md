@@ -29,4 +29,4 @@ Configuration details matter: `idle_timeout` must be tuned to prevent connection
 
 ## Related concepts
 
-[[PostgreSQL Scaling]], [[Thundering Herd]]
+[[postgresql-scaling|PostgreSQL Scaling]], [[thundering-herd|Thundering Herd]]

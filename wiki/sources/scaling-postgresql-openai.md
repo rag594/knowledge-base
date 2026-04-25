@@ -10,7 +10,7 @@ tags: [software, systems, databases, engineering]
 
 ## Summary
 
-A first-person engineering account by [[Bohan Zhang]] of how OpenAI scaled PostgreSQL to millions of queries per second for 800 million ChatGPT and API users — without sharding PostgreSQL itself. The piece is remarkable for showing how far a single-primary architecture can be pushed through disciplined optimization: ~50 read replicas, aggressive caching, workload isolation, connection pooling, and multi-layer rate limiting. 10x load growth in one year is the backdrop; the article reads as both a war story and a playbook.
+A first-person engineering account by [[bohan-zhang|Bohan Zhang]] of how OpenAI scaled PostgreSQL to millions of queries per second for 800 million ChatGPT and API users — without sharding PostgreSQL itself. The piece is remarkable for showing how far a single-primary architecture can be pushed through disciplined optimization: ~50 read replicas, aggressive caching, workload isolation, connection pooling, and multi-layer rate limiting. 10x load growth in one year is the backdrop; the article reads as both a war story and a playbook.
 
 ## Key points
 
@@ -18,7 +18,7 @@ A first-person engineering account by [[Bohan Zhang]] of how OpenAI scaled Postg
 - **No new tables in PostgreSQL** — all new workloads default to sharded systems. A hard architectural boundary enforced by policy.
 - **MVCC write amplification** is the core PostgreSQL weakness at scale: every update copies the full row, creating dead tuples, bloat, and autovacuum complexity. Write-heavy paths must be routed elsewhere.
 - **PgBouncer** connection pooling (transaction/statement mode) dropped average connection setup time from 50ms to 5ms. Each replica gets its own Kubernetes deployment of PgBouncer pods behind a load-balancing Service.
-- **Cache locking**: during a cache-miss storm, only one reader acquires a lock per key and fetches from PostgreSQL — all others wait. Prevents [[Thundering Herd]] from cascading into DB overload.
+- **Cache locking**: during a cache-miss storm, only one reader acquires a lock per key and fetches from PostgreSQL — all others wait. Prevents [[thundering-herd|Thundering Herd]] from cascading into DB overload.
 - **Workload isolation**: low-priority and high-priority traffic routed to separate PostgreSQL instances. Noisy neighbor problems contained by partition rather than throttle.
 - **Rate limiting** at 4 layers: application, connection pooler, proxy, query. ORM layer enhanced to block specific query digests when needed.
 - **Schema discipline**: 5-second timeout on all schema changes; only lightweight operations on existing tables; no full table rewrites; backfills rate-limited even if they take a week.
@@ -32,11 +32,11 @@ The "vicious cycle" pattern is described precisely: upstream issue → cache mis
 
 ## Authors & publications
 
-[[Bohan Zhang]], [[OpenAI Blog]]
+[[bohan-zhang|Bohan Zhang]], [[openai-blog|OpenAI Blog]]
 
 ## Concepts
 
-[[PostgreSQL Scaling]], [[Connection Pooling]], [[Thundering Herd]], [[Database Replication]]
+[[postgresql-scaling|PostgreSQL Scaling]], [[connection-pooling|Connection Pooling]], [[thundering-herd|Thundering Herd]], [[database-replication|Database Replication]]
 
 ## Connections
 
