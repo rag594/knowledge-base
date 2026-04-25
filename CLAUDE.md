@@ -295,7 +295,7 @@ Operations: `ingest`, `query`, `lint`, `update`.
 
 ## Publishing
 
-The wiki is deployed to `wiki.raghavrastogi.xyz` via Quartz + GitHub Pages. After each ingest session, remind the human to publish:
+The wiki is deployed to `wiki.raghavrastogi.in` via Quartz + GitHub Pages. After each ingest session, remind the human to publish:
 
 ```
 git add -A && git commit -m "ingest: <article title>" && git push

@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "wiki.raghavrastogi.xyz",
+    baseUrl: "wiki.raghavrastogi.in",
     ignorePatterns: ["private", "templates", ".obsidian", "raw", "node_modules"],
     defaultDateType: "modified",
     theme: {
